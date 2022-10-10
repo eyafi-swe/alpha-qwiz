@@ -4,7 +4,7 @@ import NavLinks from '../NavLinks/NavLinks';
 const Navbar = () => {
     const [open,setOpen] = useState(false);
     const routs = [
-        {id:1,name:"Topics",path:"/"},
+        {id:1,name:"Chapters",path:"/"},
         {id:2,name:"Analysis",path:"/analysis"},
         {id:3,name:"Weblog",path:"/weblog"}
     ]

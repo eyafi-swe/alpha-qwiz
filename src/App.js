@@ -1,10 +1,33 @@
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
-import Navbar from './Components/Navbar/Navbar';
+import Chapters from './Components/Chapters/Chapters';
+import Main from './Layout/Main';
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path:'/',
+      element: <Main></Main>,
+      children: [
+        {
+          path:'/',
+          element: <Chapters></Chapters>
+        },
+        {
+          path:'/analysis',
+          element: <div>Analysis page</div>
+        },
+        {
+          path:'/weblog',
+          element: <div>weblog page</div>
+        },
+      ]
+    } 
+  ])
   return (
     <div className= " ">
-      <Navbar></Navbar>
+      <RouterProvider router={router} />
     </div>
   );
 }

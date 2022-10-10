@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+React Router for beginners ->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Installation -
+npm install react-router-dom
 
-## Available Scripts
+Create Router -
 
-In the project directory, you can run:
+Step 1:
+in App.js
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <div>Hello world!</div>,
+  },
+  {
+    path: "/friends", 
+    element: <Friends></Friends>
+  },
+]);
 
-### `npm start`
+Step 2:
+inside the return div
+<RouterProvider router={router} />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Step 3:
+Set some routes
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+How to set some routes -
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Step 1: Create a component named Header or whatever relevant.
+Step 2: Use NavLink component from react router. You can use Link component too.
+        But NavLink component provides e feature of styling the active navigation.
+        <NavLink  to = '/about'>About</NavLink>
+        Styling the active nav item
+        <NavLink className={({isActive})=> isActive ? 'active' : undefined} to = '/home'>Home</NavLink>
+Step 3: Use the Header component in the top of every page component. (Bad practice)
 
-### `npm run build`
+To use Header(Navigation bar) or any common component in every page of the web app - 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Step 1: Create a folder named Layout or relevant any name outside of the component folder.
+Step 2: Create a component. Give it a relevant name.
+Step 3: Add the Header component.
+Step 3: Add <Outlet></Outlet> component from react-router-dom.
+You can create and add as more component as you want there before the Outlet component. All will show as common comonent in every page.
+Step 4: Add the created component in the router which was created in App.js file, and add children property in that router object.
+{
+    path: "/",
+    element: <Main></Main>, 
+    children:[
+        { path: "/", element: <Home></Home> },
+        { path: "/home", element: <Home></Home> },
+        { path: "/about", element: <About></About> },
+        .
+        .
+        {routes which you want to add/ which will have the common layout}
+    ]
+}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The routes which you don't want to keep inside the children [], add the header component in the top of that routed component.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+Set dynamic router -
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Way 1: Example -
+<Link to= {`/products/${slug}`}>Details</Link>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Way 2: Example -
+<Link to= {`/products/${slug}`}>
+  <button>Details</button>
+</Link>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Way 3: Using useNavigate() hook from react router dom. Example -
+const navigate = useNavigate()
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+const clickHandler = ()=> {
+        navigate(`/products/${slug}`);
+    }
 
-## Learn More
+<button onClick={clickHandler}>Details</button>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Load data by router - 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This is very simple. Use loader from react router. Example -
+{
+    path: "/products",
+    loader: async () => {
+    return fetch('https://openapi.programming-hero.com/api/phones?search=iphone');
+    },
+    element: <Products></Products>
+}
 
-### Code Splitting
+To get the data to display in the component use useLoaderData() hook from react router dom. Example -
+const products = useLoaderData();
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Then do whatever the fuck you want to do with that data.
