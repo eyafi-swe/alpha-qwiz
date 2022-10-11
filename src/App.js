@@ -3,6 +3,7 @@ import './App.css';
 import Chapters from './Components/Chapters/Chapters';
 import NotFound from './Components/NotFound/NotFound';
 import Quiz from './Components/Quiz/Quiz';
+import Weblog from './Components/Weblog/Weblog';
 import Main from './Layout/Main';
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
         },
         {
           path:'/weblog',
-          element: <div>weblog page</div>
+          element: <Weblog></Weblog>
         },
       ]
     },
