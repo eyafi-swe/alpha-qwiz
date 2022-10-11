@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Chapters from './Components/Chapters/Chapters';
+import NotFound from './Components/NotFound/NotFound';
 import Quiz from './Components/Quiz/Quiz';
 import Main from './Layout/Main';
 
@@ -34,7 +35,7 @@ function App() {
     },
     {
       path: '*',
-      element: <div>Nai kisu</div>
+      element: <NotFound></NotFound>
     } 
   ])
   return (
