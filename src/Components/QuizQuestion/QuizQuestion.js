@@ -21,7 +21,7 @@ const QuizQuestion = ({ qstion, serial }) => {
     return (
         <div className='border container lg:w-1/2 mx-auto bg-slate-100 mt-10 px-5 py-2 rounded-lg'>
             <div className='grid grid-cols-6 mb-2'>
-                <div>
+                <div className=''>
 
                 </div>
                 <div className=' col-span-4 '>

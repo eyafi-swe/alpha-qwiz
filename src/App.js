@@ -38,7 +38,7 @@ function App() {
     {
       path: '*',
       element: <NotFound></NotFound>
-    } 
+    },
   ])
   return (
     <div className= " ">
