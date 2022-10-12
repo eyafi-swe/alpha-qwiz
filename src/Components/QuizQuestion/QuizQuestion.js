@@ -14,7 +14,7 @@ const QuizQuestion = ({ qstion, serial }) => {
         }
         console.log(correctAnswer, selected, isCorrect)
     }
-    const notify = () => isCorrect ? toast("Wow so easy!") : toast("Not Cool! You may google it.");
+    const notify = () => isCorrect ? toast("Great Job. So easy!") : toast("Not Cool! You may google it.");
     const showCorrectAnswer = () => toast("Correct answer: "+correctAnswer);
     return (
         <div className='border container lg:w-1/2 mx-auto bg-slate-100 mt-10 px-5 py-2 rounded-lg'>

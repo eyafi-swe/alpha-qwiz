@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = ({ blog }) => {
     const { title, image, date, author, description } = blog;
     return (
-        <div className='border bg-slate-200 rounded-md'>
+        <div className='border bg-slate-200 rounded-md shadow-lg shadow-slate-500'>
             <img src={image} alt="" className='rounded-t-md' />
             <div className='px-3 my-3'>
                 <p className='text-gray-600 text-sm'>{date} by <span className='text-base text-orange-600 font-semibold'>{author}</span></p>
