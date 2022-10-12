@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import Analysis from './Components/Analysis/Analysis';
 import Chapters from './Components/Chapters/Chapters';
 import NotFound from './Components/NotFound/NotFound';
 import Quiz from './Components/Quiz/Quiz';
@@ -26,7 +27,7 @@ function App() {
         },
         {
           path:'/analysis',
-          element: <div>Analysis page</div>
+          element: <Analysis></Analysis>
         },
         {
           path:'/weblog',
