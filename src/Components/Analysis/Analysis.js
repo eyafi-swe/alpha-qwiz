@@ -8,13 +8,13 @@ const Analysis = () => {
             .then(response => response.json())
             .then(data => setDatas(data.data))
     }, [])
-    console.log(datas)
+    
     return (
         <div className='mt-10'>
             <h1 className='text-center text-3xl text-orange-800 font-semibold'>Graphical Analysis</h1>
             <p className='text-center text-gray-400'>A graphical analysis of quizes</p>
 
-            <div className='mt-10 flex md:justify-center border lg:w-1/2 mx-auto'>
+            <div className='mt-10 flex md:justify-center border lg:w-1/2 mx-auto rounded-md'>
                 <ResponsiveContainer width="90%" height={400}>
                     <BarChart data={datas}>
                         <XAxis dataKey="name" />
