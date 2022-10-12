@@ -8,8 +8,7 @@ const Quiz = () => {
     const { status,data } = quizData;
     const { name, questions, total } = data;
     let topicName;
-    console.log(quizData)
-    // status ? console.log('Gottha') : console.log("nare vai nai")
+    
     status ? topicName = name : topicName = 'Not Found'
     return (
         <div className='mt-10 text-center text-orange-800'>

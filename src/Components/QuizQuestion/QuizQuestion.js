@@ -1,17 +1,15 @@
 import { EyeIcon } from '@heroicons/react/24/solid';
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const QuizQuestion = ({ qstion, serial }) => {
     const { options, question, correctAnswer } = qstion;
     let isCorrect;
     const handleClick = (selected) => {
         if (correctAnswer === selected) {
-            console.log('Thik ache')
             isCorrect = true;
         }
         else {
-            console.log('Na vai')
             isCorrect = false
         }
         console.log(correctAnswer, selected, isCorrect)
@@ -29,18 +27,15 @@ const QuizQuestion = ({ qstion, serial }) => {
                 </div>
                 <div className=' flex justify-end'>
                     <EyeIcon className='h-5 w-5 cursor-pointer' onClick={showCorrectAnswer}></EyeIcon>
-                    <ToastContainer />
+                    
                 </div>
             </div>
             <div className='grid md:grid-cols-2 gap-4 text-white' >
                 {
-                    options.map((option, i = 0) => <div className=' bg-orange-800 py-5 px-1 rounded-lg text-center' key={i}>
-                        <label className='cursor-pointer hover:text-gray-300' >
-                            <span className='hidden'>{i++}</span>
-                            <input type="radio" name='selected-answer' value={option} onClick={() => { handleClick(option); notify() }} />
-                            <span className='ml-1'>{option}</span>
-                            <ToastContainer />
-                        </label>
+                    options.map((option, i = 0) => <div className=' bg-orange-800 hover:bg-white hover:text-orange-800 border border-orange-800 py-5 rounded-lg text-center cursor-pointer' key={i} onClick={() => { handleClick(option); notify() }}>
+                        
+                        <p>{option}</p>
+                        
                     </div>)
                 }
 
